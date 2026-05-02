@@ -1,0 +1,14 @@
+
+{
+  "schemaVersion": 1,
+  "id": "custommace",
+  "version": "1.0",
+  "name": "Custom Mace",
+  "entrypoints": {
+    "main": ["com.example.mace.CustomMaceMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": "1.21.1"
+  }
+}
