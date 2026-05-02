@@ -1,23 +1,35 @@
-
-plugins {
-    id 'fabric-loom' version '1.5.7'
-    id 'maven-publish'
+buildscript {
+    repositories {
+        maven { url = 'https://maven.fabricmc.net/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.fabricmc:fabric-loom:1.5.7'
+    }
 }
 
-group = project.maven_group
-version = project.mod_version
+apply plugin: 'fabric-loom'
+apply plugin: 'maven-publish'
+
+group = "com.example"
+version = "1.0"
 
 repositories {
     mavenCentral()
+    maven { url = 'https://maven.fabricmc.net/' }
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    minecraft "com.mojang:minecraft:1.21.1"
+    mappings "net.fabricmc:yarn:1.21.1+build.3:v2"
+    modImplementation "net.fabricmc:fabric-loader:0.15.11"
     modImplementation "net.fabricmc.fabric-api:fabric-api:0.100.1+1.21.1"
 }
 
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.release = 21
 }
